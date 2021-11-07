@@ -71,6 +71,11 @@ GOTRUE_API_HOST=localhost
 PORT=9999
 ```
 
+### Fix for PostgreSQL
+```
+ALTER ROLE postgres SET search_path = "$user", auth, public;
+```
+
 `API_HOST` - `string`
 
 Hostname to listen on.
