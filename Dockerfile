@@ -35,11 +35,14 @@ RUN apk add --no-cache ca-certificates
 COPY --from=build /go/src/github.com/netlify/gotrue/.env /usr/local/bin/.env
 COPY --from=build /go/src/github.com/netlify/gotrue/gotrue /usr/local/bin/gotrue
 
-#USER netlify
-EXPOSE 3000
 
 WORKDIR /usr/local/bin/
 
 # Command to run when starting the container.
+
+#USER netlify
+ENV HOST 0.0.0.0
+EXPOSE 3000
+
 CMD ["gotrue"]
 #ENTRYPOINT ["tail", "-f", "/dev/null"]
