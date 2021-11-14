@@ -37,6 +37,9 @@ COPY --from=build /go/src/github.com/netlify/gotrue/gotrue /usr/local/bin/gotrue
 
 #USER netlify
 EXPOSE 3000
+
+WORKDIR /usr/local/bin/
+
 # Command to run when starting the container.
-#CMD ["gotrue"]
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+CMD ["gotrue"]
+#ENTRYPOINT ["tail", "-f", "/dev/null"]
