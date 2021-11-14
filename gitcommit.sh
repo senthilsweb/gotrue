@@ -7,4 +7,4 @@ if [ ! -z "$1" -a "$1" != " " ]; then
 fi
 git commit -m "$str"
 
-Git push -u origin main
+git push -u origin main
