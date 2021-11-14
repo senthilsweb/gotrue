@@ -2,6 +2,7 @@
 vendor/
 gotrue
 gotrue-arm64
+data/postgres_db
 
 .DS_Store
 .vscode
