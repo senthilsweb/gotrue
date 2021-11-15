@@ -32,7 +32,7 @@ FROM alpine:3.7
 RUN adduser -D -u 1000 netlify
 
 RUN apk add --no-cache ca-certificates
-COPY --from=build /go/src/github.com/netlify/gotrue/.env /usr/local/bin/.env
+#COPY --from=build /go/src/github.com/netlify/gotrue/.env /usr/local/bin/.env
 COPY --from=build /go/src/github.com/netlify/gotrue/gotrue /usr/local/bin/gotrue
 
 
