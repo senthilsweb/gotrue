@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+  api.gotrue:
+    image: senthilsweb/gotrue:latest
+    container_name: api.gotrue
+    networks:
+      - backend
+    restart: unless-stopped
+    tty: true
+    ports:
+      - 4000:3000
+    #volumes:
+    #  - ./data/gotrue_config:/usr/local/bin
+    environment:
+      - GOTRUE_DB_DRIVER=postgres
+      - GOTRUE_API_PORT=3000
+      - API_EXTERNAL_URL=http://localhost:4000
+      - DATABASE_URL=postgres://zypress_user:zypress_pwd@db.postgres:5432/zypress_db
+      - GOTRUE_JWT_SECRET="CHANGE-THIS! VERY IMPORTANT!"
+      - GOTRUE_JWT_EXP=3600
+      - GOTRUE_JWT_AUD=authenticated
+      - GOTRUE_JWT_DEFAULT_GROUP_NAME=authenticated
+      - GOTRUE_JWT_ADMIN_ROLES="supabase_admin,service_role"
+      - GOTRUE_API_HOST=0.0.0.0
+      - GOTRUE_SITE_URL=http://example.com
+      - GOTRUE_MAILER_AUTOCONFIRM=true
+      - GOTRUE_EXTERNAL_EMAIL_ENABLED=true
+      - GOTRUE_SMTP_SENDER_NAME="John Smith"
+      - GOTRUE_SMTP_HOST=smtp.mailgun.org
+      - GOTRUE_SMTP_PORT=587
+      - GOTRUE_SMTP_USER=
+      - GOTRUE_SMTP_PASS=
+      - GOTRUE_SMTP_ADMIN_EMAIL=
+networks:
+  backend:
